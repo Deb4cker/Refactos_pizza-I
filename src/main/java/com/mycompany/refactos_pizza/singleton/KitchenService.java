@@ -11,7 +11,7 @@ public class KitchenService {
 
     private static Kitchen systemKitchen = new Kitchen();
     
-    public KitchenService() {
+    private KitchenService() {
         if(systemKitchen == null){
             systemKitchen = new Kitchen();
         }
@@ -21,23 +21,23 @@ public class KitchenService {
         return systemKitchen;
     }
 
-    public List<Order> getPendingOrders(){
+    public static List<Order> getPendingOrders(){
         return systemKitchen.getPendingOrders();
     }
 
-    public List<Order> getPreparingOrders(){
+    public static List<Order> getPreparingOrders(){
         return systemKitchen.getPreparingOrders();
     }
 
-    public List<Order> getReadyOrders(){
+    public static List<Order> getReadyOrders(){
         return systemKitchen.getReadyOrders();
     }
 
-    public void start(){
+    public static void start(){
         systemKitchen.start();
     }
 
-    public void stop(){
+    public static void stop(){
         systemKitchen.stop();
     }
 }

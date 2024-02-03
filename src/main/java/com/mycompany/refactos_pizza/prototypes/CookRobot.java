@@ -6,11 +6,9 @@ import com.mycompany.refactos_pizza.singleton.KitchenService;
 
 public class CookRobot extends Thread implements RobotPrototype{
 
-    private KitchenService kitchenService;
     private Kitchen kitchen;
 
     public CookRobot() {
-        this.kitchenService = new KitchenService();
         this.kitchen = KitchenService.getKitchen();
     }
 
@@ -21,11 +19,11 @@ public class CookRobot extends Thread implements RobotPrototype{
         while (running) {
             try {
                 Thread.sleep(10000);
-                if (!kitchenService.getPreparingOrders().isEmpty()) {
-                    var order = kitchenService.getPreparingOrders().get(0);
+                if (!KitchenService.getPreparingOrders().isEmpty()) {
+                    var order = KitchenService.getPreparingOrders().get(0);
                     order.setStatus(Status.READY_TO_DELIVER);
-                    kitchenService.getReadyOrders().add(order);
-                    kitchenService.getPreparingOrders().remove(0);
+                    KitchenService.getReadyOrders().add(order);
+                    KitchenService.getPreparingOrders().remove(0);
                     kitchen.notifyObservers(order);
                 }
             } catch (InterruptedException ex) {

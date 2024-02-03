@@ -8,7 +8,6 @@ import com.mycompany.refactos_pizza.view.MenuView;
 
 public class Facade {
 
-    KitchenService kitchenService = new KitchenService();
     Map<String, MenuView> menuViews = new HashMap<>();
 
     public void openView(String name) {
@@ -29,11 +28,11 @@ public class Facade {
     }
 
     public void startKitchen() {
-        kitchenService.start();
+        KitchenService.start();
     }
 
     public void stopKitchen() {
-        kitchenService.stop();
+        KitchenService.stop();
     }
 
     public void createAssistantRobot() {
